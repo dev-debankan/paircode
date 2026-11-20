@@ -1,0 +1,11 @@
+first i created the project using npm 
+then i made the ui basic ui using react and tailwind 
+then used Monaco editor for the coding playground
+now I will use yjs for maintining concurrency between multiple users 
+yjs uses socket io behind the scenes ,Yjs mainly handeles the CRDT(conflict-free replicated data type)
+now used this command to set up the backend -npm init -y && express soccket.io y-socket.io
+
+
+frontend=> build  [npm run build]
+the Vite build writes the production files directly into backend/public
+run backend server

@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.editor-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: #fffbeb;
+  background: #02060f;
+  font-family: system-ui, sans-serif;
+}

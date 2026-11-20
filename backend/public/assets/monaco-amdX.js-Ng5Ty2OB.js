@@ -1,0 +1,1 @@
+import{bK as r,dF as d,dG as c,dH as n,dI as l,dJ as u}from"./monaco-base-common-VXEA-TgA.js";function M(o,s){const t=!!(globalThis._VSCODE_PRODUCT_JSON??globalThis.vscode?.context?.configuration()?.product)?.commit&&(n||l&&u),e=`${o}/${s}`,a=`${t?d:c}/${e}`;return r.asBrowserUri(a).toString(!0)}export{M as r};

@@ -149,8 +149,8 @@ function ProductPreview() {
         <div className="code-line"><span className="line-number">5</span><span>{"}"}</span></div>
         <div className="code-line"><span className="line-number">6</span><span /></div>
         <div className="code-line"><span className="line-number">7</span><span><b className="code-blue">console</b>.<b className="code-yellow">log</b>(<b className="code-yellow">sayHello</b>(<b className="code-green">"world"</b>))<span className="mock-cursor" aria-hidden="true" /></span></div>
-        <div className="collaborator-cursor cursor-a" aria-hidden="true"><span>Aisha</span></div>
-        <div className="collaborator-cursor cursor-b" aria-hidden="true"><span>Rohan</span></div>
+        <div className="collaborator-cursor cursor-a" aria-hidden="true"><span>John</span></div>
+        <div className="collaborator-cursor cursor-b" aria-hidden="true"><span>Sam</span></div>
       </div>
       <div className="preview-statusbar">
         <span><i /> 2 collaborators</span>

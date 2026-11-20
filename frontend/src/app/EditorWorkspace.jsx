@@ -87,6 +87,18 @@ function EditorWorkspace() {
 
   return (
     <main className="workspace-page">
+      <aside className="workspace-users">
+        <h2>Users</h2>
+        <p className="workspace-connection" role="status">
+          Collaboration: {connectionStatus}
+        </p>
+        <ul>
+          {users.map((user, index) => (
+            <li key={index}>{user.username}</li>
+          ))}
+        </ul>
+      </aside>
+
       <section className="workspace-window" aria-label="Paircode shared playground">
         <header className="workspace-titlebar">
           <div className="workspace-dots" aria-hidden="true">

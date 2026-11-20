@@ -86,28 +86,86 @@ function EditorWorkspace() {
   }, [username, yText, ydoc])
 
   return (
-    <main className="h-screen w-full bg-gray-950 flex gap-4 p-4">
-      <aside className="h-full w-1/4 bg-amber-50 rounded-lg">
-        <h2 className="text-2xl font-bold p-4 border-b border-gray-300">Users</h2>
-        <p className="px-4 pt-3 text-sm text-gray-600" role="status">
-          Collaboration: {connectionStatus}
-        </p>
-        <ul className="p-4">
-          {users.map((user, index) => (
-            <li key={index} className="p-2 bg-gray-800 text-white rounded mb-2">
-              {user.username}
-            </li>
-          ))}
-        </ul>
-      </aside>
-      <section className="w-3/4 bg-neutral-800 rounded-lg overflow-hidden">
-        <Editor
-          height="100%"
-          defaultLanguage="javascript"
-          defaultValue="// some comment"
-          theme="vs-dark"
-          onMount={handleMount}
-        />
+    <main className="workspace-page">
+      <section className="workspace-window" aria-label="Paircode shared playground">
+        <header className="workspace-titlebar">
+          <div className="workspace-dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <span className="workspace-title">paircode / playground</span>
+          <span className={`workspace-live workspace-live-${connectionStatus}`}>
+            <i aria-hidden="true" />
+            {connectionStatus === "connected" ? "Live" : connectionStatus}
+          </span>
+        </header>
+
+        <div className="workspace-tab">
+          <span className="workspace-language-mark">JS</span>
+          <span>index.js</span>
+          <span className="workspace-unsaved" aria-hidden="true">●</span>
+        </div>
+
+        <section className="workspace-editor">
+          <Editor
+            height="100%"
+            defaultLanguage="javascript"
+            defaultValue="// Start coding together"
+            theme="paircode"
+            onMount={handleMount}
+            beforeMount={(monaco) => {
+              monaco.editor.defineTheme("paircode", {
+                base: "vs-dark",
+                inherit: true,
+                rules: [
+                  { token: "comment", foreground: "8995A8" },
+                  { token: "keyword", foreground: "C6A7F7" },
+                  { token: "string", foreground: "A8D7A1" },
+                  { token: "number", foreground: "E8D28A" },
+                ],
+                colors: {
+                  "editor.background": "#0B111C",
+                  "editor.foreground": "#D3DAE5",
+                  "editorLineNumber.foreground": "#566174",
+                  "editorLineNumber.activeForeground": "#AAB4C3",
+                  "editorCursor.foreground": "#FF9A79",
+                  "editor.selectionBackground": "#26354D",
+                  "editor.inactiveSelectionBackground": "#1D2A3C",
+                  "editorIndentGuide.background1": "#1B2637",
+                  "editorIndentGuide.activeBackground1": "#344156",
+                  "editorWidget.border": "#A5B5CD",
+                },
+              })
+            }}
+            options={{
+              automaticLayout: true,
+              fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+              fontSize: 13,
+              lineHeight: 22,
+              minimap: { enabled: false },
+              padding: { top: 18, bottom: 18 },
+              overviewRulerBorder: false,
+              renderLineHighlight: "line",
+              scrollBeyondLastLine: false,
+              smoothScrolling: true,
+              tabSize: 2,
+            }}
+          />
+        </section>
+
+        <footer className="workspace-statusbar">
+          <span className="workspace-collaborators" role="status">
+            <i aria-hidden="true" />
+            {users.length} collaborator{users.length === 1 ? "" : "s"}
+            {users.length > 0 && (
+              <span className="workspace-usernames">
+                {users.map((user) => user.username).join(", ")}
+              </span>
+            )}
+          </span>
+          <span>JavaScript</span>
+        </footer>
       </section>
     </main>
   )
